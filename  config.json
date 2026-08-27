@@ -1,0 +1,589 @@
+{
+  "app": {
+    "name": "PhoneSee",
+    "version": "1.0.0",
+    "author": "Raj Gautam",
+    "description": "Phone Number Intelligence Tool",
+    "license": "MIT",
+    "repository": "https://github.com/rajgautam/phonesee",
+    "website": "https://phonesee.dev",
+    "docs": "https://phonesee.dev/docs",
+    "support": "https://github.com/rajgautam/phonesee/issues",
+    "keywords": [
+      "phone",
+      "intelligence",
+      "osint",
+      "metadata",
+      "carrier",
+      "lookup",
+      "reconnaissance",
+      "security",
+      "cli",
+      "open-source"
+    ],
+    "category": "Security Tool",
+    "tags": [
+      "phone-number",
+      "intelligence",
+      "metadata",
+      "carrier-lookup",
+      "spam-detection",
+      "cybersecurity",
+      "recon-tool"
+    ]
+  },
+  
+  "settings": {
+    "timeout": 10,
+    "retry_attempts": 3,
+    "retry_delay": 1,
+    "save_reports": true,
+    "output_directory": "reports",
+    "report_format": "json",
+    "log_level": "INFO",
+    "log_file": "phonesee.log",
+    "enable_logging": true,
+    "enable_animations": true,
+    "enable_colors": true,
+    "enable_sounds": false,
+    "language": "en",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "timezone": "Asia/Kolkata",
+    "max_batch_size": 100,
+    "batch_delay": 2,
+    "cache_enabled": true,
+    "cache_duration": 3600,
+    "cache_directory": ".cache",
+    "proxy_enabled": false,
+    "proxy_url": "",
+    "user_agent": "PhoneSee/1.0.0",
+    "verify_ssl": true,
+    "allow_offline_mode": true,
+    "offline_mode": false,
+    "debug_mode": false,
+    "verbose": false,
+    "quiet": false,
+    "no_banner": false,
+    "no_color": false,
+    "no_animation": false,
+    "no_footer": false,
+    "interactive": true,
+    "auto_save": true,
+    "auto_analyze": false,
+    "copy_to_clipboard": false
+  },
+  
+  "apis": {
+    "phone_metadata": {
+      "enabled": true,
+      "provider": "mock",
+      "fallback_provider": "mock",
+      "api_key_env": "NUMVERIFY_API_KEY",
+      "base_url": "http://apilayer.net/api/validate",
+      "timeout": 10,
+      "retry_attempts": 3,
+      "rate_limit": 100,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 1,
+      "requires_key": true,
+      "key_required": true,
+      "free_tier": true,
+      "free_limit": 100,
+      "paid_tier": false,
+      "response_format": "json",
+      "supported_countries": "*",
+      "supported_types": [
+        "mobile",
+        "landline",
+        "toll_free",
+        "premium",
+        "voip",
+        "special_services"
+      ],
+      "features": [
+        "validation",
+        "carrier_lookup",
+        "country_lookup",
+        "line_type",
+        "location"
+      ],
+      "endpoints": {
+        "validate": "/validate",
+        "countries": "/countries"
+      },
+      "parameters": {
+        "access_key": "{api_key}",
+        "number": "{phone_number}",
+        "format": 1,
+        "country_code": ""
+      },
+      "headers": {
+        "User-Agent": "PhoneSee/1.0.0",
+        "Accept": "application/json"
+      }
+    },
+    
+    "reputation": {
+      "enabled": false,
+      "provider": "mock",
+      "fallback_provider": "none",
+      "api_key_env": "",
+      "base_url": "",
+      "timeout": 10,
+      "retry_attempts": 3,
+      "rate_limit": 50,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 2,
+      "requires_key": false,
+      "key_required": false,
+      "free_tier": true,
+      "free_limit": 50,
+      "paid_tier": false,
+      "response_format": "json",
+      "supported_countries": "*",
+      "features": [
+        "spam_detection",
+        "scam_reports",
+        "fraud_detection",
+        "caller_feedback"
+      ],
+      "endpoints": {
+        "lookup": "/lookup",
+        "report": "/report"
+      },
+      "parameters": {
+        "api_key": "{api_key}",
+        "phone": "{phone_number}"
+      },
+      "headers": {
+        "User-Agent": "PhoneSee/1.0.0",
+        "Accept": "application/json"
+      },
+      "spam_thresholds": {
+        "low": 20,
+        "medium": 50,
+        "high": 80
+      },
+      "confidence_levels": {
+        "min": 0,
+        "max": 100,
+        "threshold": 50
+      }
+    },
+    
+    "carrier_lookup": {
+      "enabled": true,
+      "provider": "mock",
+      "fallback_provider": "mock",
+      "api_key_env": "",
+      "base_url": "",
+      "timeout": 10,
+      "retry_attempts": 2,
+      "rate_limit": 200,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 3,
+      "requires_key": false,
+      "key_required": false,
+      "free_tier": true,
+      "free_limit": 200,
+      "paid_tier": false,
+      "response_format": "json",
+      "supported_countries": "*",
+      "features": [
+        "carrier_name",
+        "carrier_type",
+        "network_info",
+        "portability"
+      ],
+      "endpoints": {
+        "lookup": "/carrier"
+      },
+      "parameters": {
+        "phone": "{phone_number}"
+      }
+    },
+    
+    "timezone_lookup": {
+      "enabled": true,
+      "provider": "mock",
+      "fallback_provider": "mock",
+      "api_key_env": "",
+      "base_url": "",
+      "timeout": 5,
+      "retry_attempts": 1,
+      "rate_limit": 500,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 4,
+      "requires_key": false,
+      "key_required": false,
+      "free_tier": true,
+      "free_limit": 500,
+      "paid_tier": false,
+      "response_format": "json",
+      "supported_countries": "*",
+      "features": [
+        "timezone",
+        "utc_offset",
+        "dst"
+      ],
+      "endpoints": {
+        "lookup": "/timezone"
+      },
+      "parameters": {
+        "phone": "{phone_number}"
+      }
+    },
+    
+    "geolocation": {
+      "enabled": false,
+      "provider": "none",
+      "fallback_provider": "none",
+      "api_key_env": "",
+      "base_url": "",
+      "timeout": 10,
+      "retry_attempts": 2,
+      "rate_limit": 100,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 5,
+      "requires_key": true,
+      "key_required": true,
+      "free_tier": true,
+      "free_limit": 100,
+      "paid_tier": false,
+      "response_format": "json",
+      "supported_countries": "*",
+      "features": [
+        "approximate_location",
+        "region",
+        "city",
+        "coordinates"
+      ],
+      "endpoints": {
+        "lookup": "/geolocation"
+      },
+      "parameters": {
+        "phone": "{phone_number}",
+        "api_key": "{api_key}"
+      },
+      "privacy_notice": "Geolocation is approximate and based on area code only"
+    },
+    
+    "osint": {
+      "enabled": false,
+      "provider": "none",
+      "fallback_provider": "none",
+      "api_key_env": "",
+      "base_url": "",
+      "timeout": 15,
+      "retry_attempts": 2,
+      "rate_limit": 20,
+      "rate_limit_period": 3600,
+      "cache_enabled": true,
+      "cache_duration": 3600,
+      "priority": 6,
+      "requires_key": true,
+      "key_required": true,
+      "free_tier": false,
+      "free_limit": 0,
+      "paid_tier": true,
+      "response_format": "json",
+      "supported_countries": "*",
+      "features": [
+        "social_media_presence",
+        "public_records",
+        "business_listings"
+      ],
+      "endpoints": {
+        "search": "/search"
+      },
+      "parameters": {
+        "phone": "{phone_number}",
+        "api_key": "{api_key}"
+      },
+      "legal_notice": "Only public information. Requires legal compliance."
+    }
+  },
+  
+  "providers": {
+    "numverify": {
+      "name": "Numverify",
+      "website": "https://numverify.com",
+      "api_docs": "https://numverify.com/documentation",
+      "pricing": "https://numverify.com/pricing",
+      "free_tier": true,
+      "free_limit": 100,
+      "requires_key": true,
+      "key_env": "NUMVERIFY_API_KEY",
+      "supported_features": [
+        "validation",
+        "carrier_lookup",
+        "country_lookup",
+        "line_type",
+        "location"
+      ],
+      "response_time": "fast",
+      "reliability": "high",
+      "data_quality": "high",
+      "rate_limits": {
+        "free": "100 requests/month",
+        "paid": "unlimited"
+      }
+    },
+    
+    "abstract": {
+      "name": "Abstract API",
+      "website": "https://www.abstractapi.com",
+      "api_docs": "https://docs.abstractapi.com/phone-validation",
+      "pricing": "https://www.abstractapi.com/pricing",
+      "free_tier": true,
+      "free_limit": 100,
+      "requires_key": true,
+      "key_env": "ABSTRACT_API_KEY",
+      "supported_features": [
+        "validation",
+        "carrier_lookup",
+        "country_lookup",
+        "line_type",
+        "location",
+        "timezone"
+      ],
+      "response_time": "fast",
+      "reliability": "high",
+      "data_quality": "high",
+      "rate_limits": {
+        "free": "100 requests/month",
+        "paid": "unlimited"
+      }
+    },
+    
+    "truecaller": {
+      "name": "Truecaller (Unofficial)",
+      "website": "https://www.truecaller.com",
+      "api_docs": "https://developer.truecaller.com",
+      "pricing": "https://developer.truecaller.com/pricing",
+      "free_tier": false,
+      "free_limit": 0,
+      "requires_key": false,
+      "key_env": "",
+      "supported_features": [
+        "caller_id",
+        "spam_detection",
+        "name_lookup"
+      ],
+      "response_time": "medium",
+      "reliability": "medium",
+      "data_quality": "high",
+      "legal_notice": "Unofficial API. For educational purposes only.",
+      "rate_limits": {
+        "free": "none",
+        "paid": "unlimited"
+      }
+    },
+    
+    "mock": {
+      "name": "Mock Provider",
+      "website": "",
+      "api_docs": "",
+      "pricing": "",
+      "free_tier": true,
+      "free_limit": "unlimited",
+      "requires_key": false,
+      "key_env": "",
+      "supported_features": [
+        "validation",
+        "carrier_lookup",
+        "country_lookup",
+        "line_type",
+        "timezone"
+      ],
+      "response_time": "instant",
+      "reliability": "perfect",
+      "data_quality": "simulated",
+      "rate_limits": {
+        "free": "unlimited",
+        "paid": "unlimited"
+      },
+      "purpose": "Testing and development"
+    }
+  },
+  
+  "output": {
+    "formats": {
+      "json": {
+        "enabled": true,
+        "indent": 2,
+        "ensure_ascii": false,
+        "sort_keys": false
+      },
+      "txt": {
+        "enabled": false,
+        "format": "plain",
+        "encoding": "utf-8"
+      },
+      "csv": {
+        "enabled": false,
+        "delimiter": ",",
+        "quote_char": "\"",
+        "encoding": "utf-8"
+      },
+      "html": {
+        "enabled": false,
+        "template": "default",
+        "css": "default"
+      },
+      "pdf": {
+        "enabled": false,
+        "template": "default",
+        "page_size": "A4"
+      }
+    },
+    
+    "display": {
+      "show_banner": true,
+      "show_footer": true,
+      "show_progress": true,
+      "show_sources": true,
+      "show_timestamp": true,
+      "show_api_status": false,
+      "show_debug_info": false,
+      "color_scheme": "cyberpunk",
+      "table_style": "double",
+      "alignment": "left",
+      "padding": 2,
+      "border_char": "═"
+    },
+    
+    "export": {
+      "auto_export": false,
+      "export_directory": "exports",
+      "filename_pattern": "{phone}_{timestamp}_{format}",
+      "compress": false,
+      "compression_format": "zip",
+      "encrypt": false,
+      "encryption_key": "",
+      "upload_to_cloud": false,
+      "cloud_provider": "",
+      "cloud_credentials": ""
+    }
+  },
+  
+  "database": {
+    "enabled": false,
+    "type": "sqlite",
+    "path": "phonesee.db",
+    "host": "",
+    "port": 0,
+    "username": "",
+    "password": "",
+    "database_name": "",
+    "table_prefix": "phonesee_",
+    "auto_migrate": true,
+    "backup_enabled": true,
+    "backup_directory": "backups",
+    "backup_interval": 86400
+  },
+  
+  "security": {
+    "api_keys_in_env": true,
+    "encrypt_reports": false,
+    "encryption_method": "AES-256",
+    "encryption_key": "",
+    "anonymize_data": false,
+    "redact_personal_info": true,
+    "gdpr_compliant": true,
+    "data_retention_days": 30,
+    "auto_delete_reports": false,
+    "secure_delete": true,
+    "audit_logging": false,
+    "rate_limiting": true,
+    "max_requests_per_minute": 10,
+    "blacklist_enabled": true,
+    "blacklist_file": "blacklist.txt",
+    "whitelist_enabled": false,
+    "whitelist_file": "whitelist.txt"
+  },
+  
+  "ui": {
+    "theme": {
+      "name": "cyberpunk",
+      "background": "black",
+      "foreground": "white",
+      "accent": "cyan",
+      "success": "green",
+      "warning": "yellow",
+      "error": "red",
+      "info": "blue",
+      "dim": "gray",
+      "bold": true,
+      "style": "default"
+    },
+    
+    "banner": {
+      "enabled": true,
+      "style": "ascii",
+      "color": "cyan",
+      "alignment": "center",
+      "show_version": true,
+      "show_author": true,
+      "show_tagline": true,
+      "tagline": "PHONE NUMBER INTELLIGENCE TOOL",
+      "animation": true,
+      "animation_speed": 0.1
+    },
+    
+    "loading": {
+      "enabled": true,
+      "style": "dots",
+      "color": "cyan",
+      "messages": [
+        "Initializing PhoneSee",
+        "Loading configuration",
+        "Connecting providers",
+        "Preparing intelligence engine",
+        "Ready"
+      ],
+      "duration": 2,
+      "spinner": "dots"
+    },
+    
+    "progress": {
+      "enabled": true,
+      "style": "bar",
+      "color": "green",
+      "show_percentage": true,
+      "show_steps": true,
+      "step_delay": 0.3
+    },
+    
+    "tables": {
+      "style": "double",
+      "color": "cyan",
+      "header_color": "bold_white",
+      "value_color": "green",
+      "unknown_color": "yellow",
+      "padding": 1,
+      "alignment": "left"
+    }
+  },
+  
+  "legal": {
+    "disclaimer": "PhoneSee is for educational and authorized testing purposes only.",
+    "terms_of_service": "https://phonesee.dev/terms",
+    "privacy_policy": "https://phonesee.dev/privacy",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2024 Raj Gautam",
+    "attribution_required": true,
+    "commercial_use": "Allowed with attribution",
+    "liability": "Software provided as-is without warranty"
+  }
+}

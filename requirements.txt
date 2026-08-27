@@ -1,0 +1,11 @@
+# Basic installation (minimal requirements)
+pip install requests python-dotenv phonenumbers colorama rich click pyfiglet termcolor tabulate
+
+# Full installation
+pip install -r requirements.txt
+
+# Development installation (includes testing tools)
+pip install -r requirements.txt pytest pytest-cov black flake8 pylint mypy
+
+# Production installation (minimal)
+pip install requests python-dotenv phonenumbers colorama

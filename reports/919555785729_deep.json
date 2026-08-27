@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "tool": "PhoneSee Deep",
+    "version": "2.0.1",
+    "author": "Raj Gautam",
+    "timestamp": "2026-08-27T22:09:50.143705",
+    "phone_number": "+919555785729"
+  },
+  "basic_info": {
+    "phone_number": "+919555785729",
+    "country_code": "91",
+    "valid": true,
+    "type": "MOBILE",
+    "country": "India",
+    "region": "Tamil Nadu",
+    "city": "Chennai",
+    "carrier": "BSNL",
+    "timezone": "Asia/Kolkata",
+    "network_type": "5G",
+    "mcc": "405",
+    "mnc": "73",
+    "ported": false,
+    "original_carrier": "BSNL",
+    "local_format": "9555785729",
+    "international_format": "+919555785729"
+  },
+  "network_info": {
+    "current_carrier": "BSNL",
+    "original_carrier": "BSNL",
+    "network_type": "5G",
+    "mcc": "405",
+    "mnc": "73",
+    "sim_type": "Postpaid",
+    "circle": "Chennai",
+    "signal_strength": "Good",
+    "roaming": false,
+    "volte_support": true
+  },
+  "geolocation": {
+    "city": "Chennai",
+    "region": "Tamil Nadu",
+    "country": "India",
+    "postal_code": "UNKNOWN",
+    "latitude": null,
+    "longitude": null,
+    "timezone": "Asia/Kolkata",
+    "languages": [
+      "UNKNOWN"
+    ],
+    "currency": "UNKNOWN"
+  },
+  "social_media": {
+    "facebook": "FOUND",
+    "instagram": "NOT_FOUND",
+    "twitter": "NOT_CHECKED",
+    "linkedin": "FOUND",
+    "telegram": "NOT_FOUND",
+    "whatsapp": "NOT_CHECKED",
+    "github": "NOT_FOUND",
+    "snapchat": "NOT_CHECKED",
+    "check_timestamp": "2026-08-27T22:09:50.143869",
+    "summary": {
+      "platforms_checked": 8,
+      "platforms_found": 2,
+      "platforms_not_found": 3,
+      "platforms_not_checked": 3
+    }
+  },
+  "breaches": {
+    "phone_number": "+919555785729",
+    "breaches_found": 0,
+    "sources": [],
+    "last_breach": null,
+    "risk_level": "NONE",
+    "total_records_exposed": 0,
+    "check_timestamp": "2026-08-27T22:09:50.143898",
+    "sources_checked": [
+      "Mock Database"
+    ]
+  },
+  "risk_assessment": {
+    "spam_score": 0,
+    "fraud_risk": 0,
+    "trust_score": 100,
+    "overall_risk": "LOW",
+    "factors": [
+      "Found on 2 social platforms"
+    ]
+  }
+}

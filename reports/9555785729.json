@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "tool": "PhoneSee",
+    "version": "1.0.0",
+    "author": "Raj Gautam",
+    "timestamp": "2026-08-27T21:44:49.809981",
+    "phone_number": "+9555785729"
+  },
+  "analysis": {
+    "phone_number": "+9555785729",
+    "valid": true,
+    "type": "MOBILE",
+    "country": "UNKNOWN",
+    "region": "UNKNOWN",
+    "carrier": "UNKNOWN",
+    "timezone": "UNKNOWN",
+    "reputation": {
+      "spam_risk": "UNKNOWN",
+      "reports": 0,
+      "confidence": 0
+    },
+    "sources": [
+      "Phone Metadata API"
+    ],
+    "country_code": "95",
+    "local_format": "55785729",
+    "international_format": "+9555785729"
+  }
+}
